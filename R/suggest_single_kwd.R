@@ -24,8 +24,8 @@
 #'   )
 #' }
 suggest_single_keyword <- function(query,
-                                 lang = "en",
-                                 interval = 0){
+                                   lang = "en",
+                                   interval = 0){
   # params check --------------------------------------------------------------
   assert_that(
     !is.na(query), !is.null(query), !is.nan(query), not_empty(query),

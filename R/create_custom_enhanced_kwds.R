@@ -6,13 +6,14 @@
 #' @param suffix_vec vector of character strings. Optional. It will generate
 #'     additional combinations of keywords and prefix_vec contents will be
 #'     placed AFTER the queries. Defaults to NULL
-#' @param prefix_vec vector of character strings. Optional. It will generate
-#'     additional combinations of keywords and prefix_vec contents will be
-#'     placed BEFORE the queries. Defaults to NULL.
 #'
 #' @return vector of character strings with all combinations of queries and
 #'     suffixes/prefixes
+#'
 #' @export
+#'
+#' @importFrom assertthat assert_that
+#' @importFrom assertthat not_empty
 #'
 #' @examples
 #' \dontrun{
@@ -27,15 +28,23 @@ create_custom_enhanced_keywords <- function(
   suffix_vec = NULL)
 {
   # params check --------------------------------------------------------------
-  assertthat::assert_that(
-    !is.na(queries), !is.null(queries), !is.nan(queries), assertthat::not_empty(queries),
-    is.vector(queries, mode = "character"),
-    is.null(suffix_vec) | is.vector(suffix_vec, mode = "any"))
+  assert_that(
+    !any(is.na(queries)), !any(is.null(queries)), !any(is.nan(queries)),
+    is.vector(queries, mode = "character"), !any(nchar(queries) < 1),
+
+    is.null(suffix_vec) | is.vector(suffix_vec, mode = "any"),
+    all(nchar(suffix_vec) >= 1)
+  )
+
+  if (!is.null(suffix_vec)) {
+    assert_that(!any(is.na(suffix_vec)), !any(is.nan(suffix_vec)))}
+
 
   # create enhanced queries ---------------------------------------------------
-  enhanced_queries <- unique(sort(
-    c(paste0(queries, " ", suffix_vec))
-  ))
+  enhanced_queries <- unique(sort(c(
+    paste(trimws(queries), suffix_vec)
+  )))
 
+  enhanced_queries <- trimws(enhanced_queries, "right")
   return(enhanced_queries)
 }

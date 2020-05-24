@@ -18,7 +18,7 @@ create_enhanced_keywords <- function(queries) {
   # params check --------------------------------------------------------------
   assertthat::assert_that(
     !is.na(queries), !is.null(queries), !is.nan(queries), assertthat::not_empty(queries),
-    is.vector(queries, mode = "character"))
+    is.vector(queries, mode = "character"), all(nchar(queries) >= 1))
 
   # create enhanced queries ---------------------------------------------------
     enhanced_queries <- sort(
@@ -28,7 +28,3 @@ create_enhanced_keywords <- function(queries) {
 
   return(enhanced_queries)
 }
-
-# !is.na(enhancing), !is.null(enhancing), !is.nan(enhancing), not_empty(enhancing),
-# length(enhancing) == 1L, is.character(enhancing),
-# enhancing %in% c("none", "basic")
