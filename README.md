@@ -41,6 +41,8 @@ devtools::install_github("Leszek-Sieminski/googleSuggestQueriesR")
 ```r
 library(googleSuggestQueriesR)
 
+# there is no authentication with the API
+
 # this can take some time due to the number of variations, please be patient
 keyword_suggestions <- googleSuggestQueriesR::suggest_keywords(
   queries = "mtcars",
