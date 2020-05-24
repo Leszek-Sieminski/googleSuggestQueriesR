@@ -28,7 +28,3 @@ create_enhanced_keywords <- function(queries) {
 
   return(enhanced_queries)
 }
-
-# !is.na(enhancing), !is.null(enhancing), !is.nan(enhancing), not_empty(enhancing),
-# length(enhancing) == 1L, is.character(enhancing),
-# enhancing %in% c("none", "basic")
