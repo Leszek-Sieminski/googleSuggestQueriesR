@@ -6,9 +6,6 @@
 #' @param suffix_vec vector of character strings. Optional. It will generate
 #'     additional combinations of keywords and prefix_vec contents will be
 #'     placed AFTER the queries. Defaults to NULL
-#' @param prefix_vec vector of character strings. Optional. It will generate
-#'     additional combinations of keywords and prefix_vec contents will be
-#'     placed BEFORE the queries. Defaults to NULL.
 #'
 #' @return vector of character strings with all combinations of queries and
 #'     suffixes/prefixes
