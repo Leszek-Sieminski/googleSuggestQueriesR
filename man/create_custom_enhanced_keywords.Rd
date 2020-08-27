@@ -8,8 +8,8 @@
 create_custom_enhanced_keywords(queries, suffix_vec = NULL)
 }
 \arguments{
-\item{queries}{vector of character strings. 'Bare' queries that will feed
-the Google Suggest.}
+\item{queries}{vector of character strings. 'Bare' queries that will be fed
+to the Google Suggest.}
 
 \item{suffix_vec}{vector of character strings. Optional. It will generate
 additional combinations of keywords and prefix_vec contents will be

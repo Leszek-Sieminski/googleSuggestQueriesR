@@ -1,8 +1,8 @@
 #' Create additional keywords by creating your own combinations of queries and
 #'     choosen vectors.
 #'
-#' @param queries vector of character strings. 'Bare' queries that will feed
-#'     the Google Suggest.
+#' @param queries vector of character strings. 'Bare' queries that will be fed
+#'     to the Google Suggest.
 #' @param suffix_vec vector of character strings. Optional. It will generate
 #'     additional combinations of keywords and prefix_vec contents will be
 #'     placed AFTER the queries. Defaults to NULL
@@ -41,10 +41,29 @@ create_custom_enhanced_keywords <- function(
 
 
   # create enhanced queries ---------------------------------------------------
-  enhanced_queries <- unique(sort(c(
-    paste(trimws(queries), suffix_vec)
-  )))
 
-  enhanced_queries <- trimws(enhanced_queries, "right")
+  # test_queries <- c("Bristol", "New York", "Warsaw")
+  # output_queries <- c()
+  #
+  # for (i in seq_along(test_queries)) {
+  #   output_queries <- c(output_queries, paste(trimws(test_queries[i]), letters))
+  # }
+  # unique(output_queries)
+  # print(output_queries)
+
+
+  enhanced_queries <- c()
+
+  for (i in seq_along(queries)) {
+    enhanced_queries <- c(enhanced_queries, paste(trimws(queries[i]), suffix_vec))
+  }
+
+  enhanced_queries <- unique(sort(trimws(enhanced_queries, "right")))
+
+  # enhanced_queries <- unique(sort(c(
+  #   paste(trimws(queries), suffix_vec)
+  # )))
+
+  # enhanced_queries <- trimws(enhanced_queries, "right")
   return(enhanced_queries)
 }
