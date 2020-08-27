@@ -1,7 +1,7 @@
 Package: googleSuggestQueriesR
 Type: Package
 Title: Find keyword suggestions via Google Suggest
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person("Leszek", "Siemiński", , "leszek.sieminski@gmail.com", c("aut", "cre")))
 Description: Enables downloading keyword suggsestions from Google Suggest API.
